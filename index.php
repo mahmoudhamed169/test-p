@@ -15,7 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 if ($_SERVER['REQUEST_URI'] === '/test') {
     // Print "test" if the URL path is "/test"
     echo json_encode(array('message' => 'test'));
-} else {
-    // Print "hello" if the URL path is anything else
+} elseif ($_SERVER['REQUEST_URI'] === '/') {
+    // Print "hello" if the URL path is "/"
     echo json_encode(array('message' => 'hello'));
+} else {
+    // Return 404 Not Found if the URL path is anything else
+    http_response_code(404);
+    echo json_encode(array('message' => 'Not found.'));
 }
