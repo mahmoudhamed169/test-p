@@ -11,5 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     exit;
 }
 
-// Print "hello"
-echo json_encode(array('message' => 'hello'));
+// Check the URL path
+if ($_SERVER['REQUEST_URI'] === '/test') {
+    // Print "test" if the URL path is "/test"
+    echo json_encode(array('message' => 'test'));
+} else {
+    // Print "hello" if the URL path is anything else
+    echo json_encode(array('message' => 'hello'));
+}
